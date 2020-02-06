@@ -6,6 +6,9 @@ class Pelanggan extends MY_Controller
 
 	public function __construct()
 	{
+		if ($this->session->userdata('status') != 'admin') {
+			redirect('home');
+		}
 		parent::__construct();
 		$this->load->library('form_validation');
 		$this->load->model('pelanggan_model');

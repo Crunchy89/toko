@@ -5,6 +5,9 @@ class Admin extends MY_Controller
 {
 	public function index()
 	{
+		if ($this->session->userdata('status') != 'admin') {
+			redirect('home');
+		}
 		$data['title'] = 'Dashboard';
 		admin_page('index', $data);
 	}

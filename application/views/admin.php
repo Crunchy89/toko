@@ -68,7 +68,7 @@
                         <i class="fas fa-fw fa-user"></i> Admin
                     </a>
                     <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
-                        <a href="#" class="dropdown-item">
+                        <a href="<?= site_url('home/logout') ?>" class="dropdown-item">
                             <i class="fas fa-sign-out-alt mr-2"></i> Logout
                         </a>
                     </div>
@@ -189,7 +189,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/layout/boxed.html" class="nav-link">
+                                    <a href="<?= site_url('home/logout') ?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Logout</p>
                                     </a>

@@ -15,34 +15,60 @@
 
     <!-- Custom styles for this template -->
     <link href="<?= base_url() ?>assets/css/shop-homepage.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/fontawesome-free/css/all.min.css">
 
 </head>
 
 <body>
-
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#"><img src="<?= base_url('assets/img/logo/') . $title->logo ?>" alt="logo" width="50px"></a>
+            <form class="form-inline my-2 my-lg-0" action="<?= site_url('home/cari') ?>" method="post">
+                <input class="form-control mr-sm-2" type="search" name="cari" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="<?= site_url('home') ?>">Home
+                        <a class="nav-link active" href="<?= site_url('home') ?>"><i class="fas fa-home"></i>Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="<?= site_url('profil') ?>">Profil Toko
+                        <a class="nav-link active" href="<?= site_url('profil') ?>"><i class="fas fa-store"></i> Profil Toko
                         </a>
                     </li>
-                    <li class="nav-item p-1">
-                        <a class="btn btn-success" href="#">Login</a>
-                    </li>
-                    <li class="nav-item p-1">
-                        <a class="btn btn-primary" href="#">Daftar</a>
-                    </li>
+                    <?php if (!$this->session->userdata('status')) : ?>
+                        <li class="nav-item p-1">
+                            <a class="btn btn-success" href="<?= site_url('home/signIn') ?>">Login</a>
+                        </li>
+                        <li class="nav-item p-1">
+                            <a class="btn btn-primary" href="<?= site_url('home/signUp') ?>">Daftar</a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if ($this->session->userdata('status') == 'admin') : ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="<?= site_url('admin') ?>"><i class="fas fa-user"></i> Admin Page
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if ($this->session->userdata('status') == 'member') : ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="<?= site_url('keranjang') ?>"><i class="fas fa-cart-arrow-down"></i> keranjang
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="<?= site_url('profile') ?>"><i class="fas fa-user"></i> Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="<?= site_url('home/logout') ?>"><i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
@@ -58,7 +84,7 @@
                 <h3 class="my-4"><?= $title->toko ?></h3>
                 <div class="list-group">
                     <?php foreach ($kategori as $row) { ?>
-                        <a href="#" class="list-group-item"><?= $row->kategori ?></a>
+                        <a href="<?= site_url('home/kategori/') . $row->id_kategori ?>" class="list-group-item"><?= $row->kategori ?></a>
                     <?php } ?>
                 </div>
 
