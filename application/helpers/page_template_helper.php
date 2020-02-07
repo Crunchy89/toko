@@ -19,4 +19,10 @@ if (!function_exists('element')) {
         $data['view'] = $ci->load->view($template, $data, true);
         $ci->load->view('admin.php', $data);
     }
+    function member_page($template, $data = null)
+    {
+        $ci = &get_instance();
+        $data['view'] = $ci->load->view($template, $data, true);
+        $ci->load->view('member.php', $data);
+    }
 }

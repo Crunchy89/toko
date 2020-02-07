@@ -81,8 +81,8 @@
     <!-- Page Content -->
     <div class="container">
 
+        <?= $this->session->flashdata('pesan'); ?>
         <div class="row">
-
             <div class="col-lg-3">
 
                 <h3 class="my-4"><?= $title->toko ?></h3>

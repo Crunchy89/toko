@@ -66,10 +66,12 @@ function rupiah($angka)
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="<?= site_url('transaksi/tambah') ?>" method="post">
+                            <form action="<?= site_url('pesanan/tambah') ?>" method="post">
                                 <div class="modal-body">
                                     <div class="form-group row">
                                         <input type="hidden" name="id_user" value="<?= $this->session->userdata('id') ?>">
+                                        <input type="hidden" name="id_barang" value="<?= $barang->id_barang ?>">
+                                        <input type="hidden" name="sum" id="sum2" value="<?= $barang->harga ?>">
                                         <label for="jumlah2" class="col-4">Jumlah Pembelian</label>
                                         <div class="col-8">
                                             <input type="number" name="jumlah" id="jumlah2" class="form-control" value="1" max="<?= $barang->stok ?>" min="1" onchange="total2()" required>
@@ -215,8 +217,10 @@ function rupiah($angka)
     function total2() {
         var jumlah = document.getElementById('jumlah2').value;
         var total = document.getElementById('total2');
+        var sum2 = document.getElementById('sum2');
         var harga = document.getElementById('harga2').value;
         var jum = jumlah * harga;
+        sum2.value = jum;
         var number_string = jum.toString(),
             sisa = number_string.length % 3,
             rupiah = number_string.substr(0, sisa),
