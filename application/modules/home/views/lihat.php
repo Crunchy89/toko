@@ -89,10 +89,12 @@ function rupiah($angka)
                                     </div>
                                     <div class="form-group row">
                                         <label for="bayar" class="col-4">Metode Pembayaran</label>
-                                        <div class="col-8">
-                                            <input type="radio" name="bayar" value="BCA"><img src="<?= base_url('assets/img/bank/bca.png') ?>" alt="" width="25%" height="60px">
-                                            <input type="radio" name="bayar" value="BRI"><img src="<?= base_url('assets/img/bank/bri.png') ?>" alt="" width="25%" height="60px">
-                                            <input type="radio" name="bayar" value="Mandiri"><img src="<?= base_url('assets/img/bank/mandiri.jpg') ?>" alt="" width="25%" height="60px">
+                                        <div class="col-8 row">
+                                            <input type="radio" class="radio" name="bayar" value="BCA" id="bca" checked="checked">
+                                            <label for="bca"><img src="<?= base_url('assets/img/bank/bca.png') ?>" alt="" width="100%" height="60px"></label>
+                                            <input type="radio" class="radio" name="bayar" value="BRI" id="bri">
+                                            <label for="bri"><img src="<?= base_url('assets/img/bank/bri.png') ?>" alt="" width="100%" height="60px"></label>
+                                            <input type="radio" class="radio" name="bayar" value="Mandiri" id="mandiri"><label for="mandiri"><img src="<?= base_url('assets/img/bank/mandiri.jpg') ?>" alt="" width="100%" height="60px"></label>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -147,6 +149,8 @@ function rupiah($angka)
                                 <div class="modal-body">
                                     <div class="form-group row">
                                         <input type="hidden" name="id_user" value="<?= $this->session->userdata('id') ?>">
+                                        <input type="hidden" name="id_barang" value="<?= $barang->id_barang ?>">
+                                        <input type="hidden" name="sum" id="sum" value="<?= $barang->harga ?>">
                                         <label for="jumlah" class="col-4">Jumlah Pembelian</label>
                                         <div class="col-8">
                                             <input type="number" name="jumlah" id="jumlah" class="form-control" value="1" max="<?= $barang->stok ?>" min="1" onchange="total()" required>
@@ -200,8 +204,10 @@ function rupiah($angka)
     function total() {
         var jumlah = document.getElementById('jumlah').value;
         var total = document.getElementById('total');
+        var sum = document.getElementById('sum');
         var harga = document.getElementById('harga').value;
         var jum = jumlah * harga;
+        sum.value = jum;
         var number_string = jum.toString(),
             sisa = number_string.length % 3,
             rupiah = number_string.substr(0, sisa),

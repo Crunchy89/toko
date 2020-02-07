@@ -143,21 +143,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?= site_url('berita') ?>" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Berita</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
                                     <a href="<?= site_url('barang') ?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Barang</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="<?= site_url('pesanan') ?>" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Pesanan</p>
                                     </a>
                                 </li>
                             </ul>
@@ -166,7 +154,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-cog"></i>
                                 <p>
-                                    Content
+                                    Content Web
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
@@ -203,7 +191,7 @@
                                 <li class="nav-item">
                                     <a href="<?= site_url('home/signUp') ?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>daftar</p>
+                                        <p>Daftar</p>
                                     </a>
                                 </li>
                             </ul>
@@ -217,6 +205,18 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= site_url('pesanan') ?>" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Pesanan</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= site_url('laporan') ?>" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Laporan Penjualan</p>
+                                    </a>
+                                </li>
                                 <li class="nav-item">
                                     <a href="<?= site_url('pelanggan') ?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>

@@ -57,11 +57,11 @@
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                             <span class="dropdown-item dropdown-header">Notifikasi</span>
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
+                            <a href="<?= site_url('transaksi') ?>" class="dropdown-item">
                                 <i class="fas fa-cart-arrow-down mr-2"></i><?= count($this->db->get_where('transaksi', ['id_user' => $this->session->userdata('id')])->result()) ?> Barang Pesanan
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item dropdown-footer">Lihat Pesanan</a>
+                            <a href="<?= site_url('transaksi') ?>" class="dropdown-item dropdown-footer">Lihat Pesanan</a>
                         </div>
                     </li>
                 <?php endif; ?>
@@ -118,6 +118,14 @@
                                 <i class="nav-icon fas fa-shopping-cart"></i>
                                 <p>
                                     Keranjang
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= site_url('histori') ?>" class="nav-link">
+                                <i class="nav-icon fas fa-dollar-sign"></i>
+                                <p>
+                                    Histori Pembelian
                                 </p>
                             </a>
                         </li>

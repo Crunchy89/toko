@@ -84,8 +84,8 @@
 
     <!-- Page Content -->
     <div class="container">
-
         <?= $this->session->flashdata('pesan'); ?>
+        <?= $this->session->flashdata('keranjang'); ?>
         <div class="row">
             <div class="col-lg-3">
 
