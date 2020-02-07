@@ -3,7 +3,8 @@ class Keranjang_model extends CI_Model
 {
     public function join()
     {
-        return $this->db->query("SELECT keranjang.*,barang.* FROM keranjang INNER JOIN barang on keranjang.id_barang=barang.id_barang")->result();
+        $id = $this->session->userdata('id');
+        return $this->db->query("SELECT keranjang.*,barang.* FROM keranjang INNER JOIN barang on keranjang.id_barang=barang.id_barang WHERE keranjang.id_user = $id")->result();
     }
     public function tambah()
     {
