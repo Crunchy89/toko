@@ -119,6 +119,12 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="<?= site_url('promo') ?>" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Promo</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="<?= site_url('kategori') ?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Kategori</p>

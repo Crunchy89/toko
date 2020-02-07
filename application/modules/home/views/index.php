@@ -8,7 +8,7 @@
 		foreach ($barang as $row) : ?>
 			<div class="col-lg-3 col-md-4 mb-4">
 				<div class="card h-100">
-					<a href="<?= site_url('home/detail/') . $row->id_barang ?>"><img class="card-img-top" src="<?= base_url('assets/img/barang/') . $row->gambar ?>" alt=""></a>
+					<a href="<?= site_url('home/detail/') . $row->id_barang ?>"><img class="card-img-top" src="<?= base_url('assets/img/barang/') . $row->gambar ?>" alt="Promo"></a>
 					<div class="card-body">
 						<h6 class="card-title">
 							<?= $row->nama_barang ?>

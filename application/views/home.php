@@ -38,7 +38,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="<?= site_url('profil') ?>"><i class="fas fa-store"></i> Profil Toko
+                        <a class="nav-link active" href="<?= site_url('home/profil') ?>"><i class="fas fa-store"></i> Profil Toko
                         </a>
                     </li>
                     <?php if (!$this->session->userdata('status')) : ?>
@@ -55,7 +55,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="<?= site_url('admin') ?>"><i class="fas fa-sign-out-alt"></i> Logout
+                            <a class="nav-link active" href="<?= site_url('home/logout') ?>"><i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </li>
                     <?php endif; ?>
