@@ -25,4 +25,8 @@ class Keranjang extends MY_Controller
 	{
 		$this->keranjang_model->beli();
 	}
+	public function hapus()
+	{
+		$this->keranjang_model->hapus();
+	}
 }

@@ -9,6 +9,7 @@ function rupiah($angka)
 <section class="content">
 	<div class="row">
 		<div class="col-12">
+			<?= $this->session->flashdata('pesan') ?>
 			<div class="card">
 				<div class="card-header">
 					<h3 class="card-title">Daftar barang</h3>
@@ -51,7 +52,7 @@ function rupiah($angka)
 											</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-secondary" data-dismiss="modal">Hapus</button>
-												<button type="button" class="btn btn-primary">Hapus</button>
+												<button type="submit" class="btn btn-primary">Hapus</button>
 											</div>
 										</form>
 									</div>

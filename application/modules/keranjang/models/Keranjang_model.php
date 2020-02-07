@@ -24,7 +24,7 @@ class Keranjang_model extends CI_Model
         $this->session->set_flashdata('keranjang', '<div class="alert alert-success text-center" role="alert">
         Keranjang ditambahkan
       </div>');
-        redirect('home');
+        redirect('keranjang');
     }
     public function beli()
     {
@@ -57,6 +57,17 @@ class Keranjang_model extends CI_Model
         $db->delete('keranjang');
         $this->session->set_flashdata('pesan', '<div class="alert alert-success text-center" role="alert">
         Barang Telah dipesan Silahkan tunggu Konfirmasi
+      </div>');
+        redirect('keranjang');
+    }
+    public function hapus()
+    {
+        $post = $this->input->post();
+        $db = $this->db;
+        $db->where('id_keranjang', $post['id']);
+        $db->delete('keranjang');
+        $this->session->set_flashdata('pesan', '<div class="alert alert-danger text-center" role="alert">
+        Barang Telah dihapus
       </div>');
         redirect('keranjang');
     }

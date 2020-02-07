@@ -21,9 +21,12 @@ function rupiah($angka)
                 <hr>
                 <p><?= $barang->detail ?></p>
                 <hr>
-
-                <button class="btn btn-success" data-toggle="modal" <?php if (!$this->session->userdata('status')) : ?> data-target="#login" <?php else : ?> data-target="#beli" <?php endif; ?>><i class="fas fa-shopping-bag"></i> Beli</button>
-                <button class="btn btn-primary" data-toggle="modal" <?php if (!$this->session->userdata('status')) : ?> data-target="#login" <?php else : ?> data-target="#keranjang" <?php endif; ?>><i class="fas fa-shopping-cart"></i> Tambah ke Keranjang</button>
+                <?php if ($barang->stok != 0) : ?>
+                    <button class="btn btn-success" data-toggle="modal" <?php if (!$this->session->userdata('status')) : ?> data-target="#login" <?php else : ?> data-target="#beli" <?php endif; ?>><i class="fas fa-shopping-bag"></i> Beli</button>
+                    <button class="btn btn-primary" data-toggle="modal" <?php if (!$this->session->userdata('status')) : ?> data-target="#login" <?php else : ?> data-target="#keranjang" <?php endif; ?>><i class="fas fa-shopping-cart"></i> Tambah ke Keranjang</button>
+                <?php else : ?>
+                    <button type="button" class="btn btn-danger w-100">Barang Habis</button>
+                <?php endif; ?>
                 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
