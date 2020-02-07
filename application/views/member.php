@@ -55,10 +55,10 @@
                             <span class="badge badge-warning navbar-badge"><?= count($this->db->get_where('transaksi', ['id_user' => $this->session->userdata('id')])->result()) ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <span class="dropdown-item dropdown-header"><?= count($this->db->get_where('transaksi', ['id_user' => $this->session->userdata('id')])->result()) ?>Notifikasi</span>
+                            <span class="dropdown-item dropdown-header">Notifikasi</span>
                             <div class="dropdown-divider"></div>
                             <a href="#" class="dropdown-item">
-                                <i class="fas fa-cart-arrow-down mr-2"></i><?= count($this->db->get_where('transaksi', ['id_user' => $this->session->userdata('id')])->result()) ?>Pesanan
+                                <i class="fas fa-cart-arrow-down mr-2"></i><?= count($this->db->get_where('transaksi', ['id_user' => $this->session->userdata('id')])->result()) ?> Barang Pesanan
                             </a>
                             <div class="dropdown-divider"></div>
                             <a href="#" class="dropdown-item dropdown-footer">Lihat Pesanan</a>

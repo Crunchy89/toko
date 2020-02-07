@@ -90,9 +90,9 @@ function rupiah($angka)
                                     <div class="form-group row">
                                         <label for="bayar" class="col-4">Metode Pembayaran</label>
                                         <div class="col-8">
-                                            <input type="radio" name="bayar" value="bca"><img src="<?= base_url('assets/img/bank/bca.png') ?>" alt="" width="25%" height="60px">
-                                            <input type="radio" name="bayar" value="bri"><img src="<?= base_url('assets/img/bank/bri.png') ?>" alt="" width="25%" height="60px">
-                                            <input type="radio" name="bayar" value="mandiri"><img src="<?= base_url('assets/img/bank/mandiri.jpg') ?>" alt="" width="25%" height="60px">
+                                            <input type="radio" name="bayar" value="BCA"><img src="<?= base_url('assets/img/bank/bca.png') ?>" alt="" width="25%" height="60px">
+                                            <input type="radio" name="bayar" value="BRI"><img src="<?= base_url('assets/img/bank/bri.png') ?>" alt="" width="25%" height="60px">
+                                            <input type="radio" name="bayar" value="Mandiri"><img src="<?= base_url('assets/img/bank/mandiri.jpg') ?>" alt="" width="25%" height="60px">
                                         </div>
                                     </div>
                                     <div class="form-group row">
