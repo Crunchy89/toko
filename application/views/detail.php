@@ -15,6 +15,7 @@
 
     <!-- Custom styles for this template -->
     <link href="<?= base_url() ?>assets/css/shop-homepage.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/fontawesome-free/css/all.min.css">
 
 </head>
 
@@ -30,19 +31,45 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="<?= site_url('home') ?>">Home
+                        <a class="nav-link active" href="<?= site_url('home') ?>"><i class="fas fa-home"></i>Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="<?= site_url('profil') ?>">Profil Toko
+                        <a class="nav-link active" href="<?= site_url('home/profil') ?>"><i class="fas fa-store"></i> Profil Toko
                         </a>
                     </li>
-                    <li class="nav-item p-1">
-                        <a class="btn btn-success" href="<?= site_url('home/signIn') ?>">Login</a>
-                    </li>
-                    <li class="nav-item p-1">
-                        <a class="btn btn-primary" href="<?= site_url('home/signUp') ?>">Daftar</a>
-                    </li>
+                    <?php if (!$this->session->userdata('status')) : ?>
+                        <li class="nav-item p-1">
+                            <a class="btn btn-success" href="<?= site_url('home/signIn') ?>">Login</a>
+                        </li>
+                        <li class="nav-item p-1">
+                            <a class="btn btn-primary" href="<?= site_url('home/signUp') ?>">Daftar</a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if ($this->session->userdata('status') == 'admin') : ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="<?= site_url('admin') ?>"><i class="fas fa-user"></i> Admin Page
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="<?= site_url('home/logout') ?>"><i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if ($this->session->userdata('status') == 'member') : ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="<?= site_url('keranjang') ?>"><i class="fas fa-cart-arrow-down"></i> keranjang
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="<?= site_url('profile') ?>"><i class="fas fa-user"></i> Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="<?= site_url('home/logout') ?>"><i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

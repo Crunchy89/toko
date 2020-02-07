@@ -54,6 +54,10 @@
                             <a class="nav-link active" href="<?= site_url('admin') ?>"><i class="fas fa-user"></i> Admin Page
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="<?= site_url('admin') ?>"><i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </li>
                     <?php endif; ?>
                     <?php if ($this->session->userdata('status') == 'member') : ?>
                         <li class="nav-item">

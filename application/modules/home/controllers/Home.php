@@ -17,6 +17,11 @@ class Home extends MY_Controller
 		$data['barang'] = $this->db->get('barang')->result();
 		front_page('index', $data);
 	}
+	public function profil()
+	{
+		$data['title'] = $this->db->get_where('title_logo', ['id_title' => 1])->row();
+		detail_page('toko', $data);
+	}
 	public function cari()
 	{
 		$cari = htmlspecialchars($this->input->post('cari'));
@@ -25,6 +30,14 @@ class Home extends MY_Controller
 		$data['promo'] = $this->db->get('promo')->result();
 		$data['barang'] = $this->db->query("SELECT * from barang where nama_barang LIKE '%$cari%'")->result();
 		front_page('index', $data);
+	}
+	public function detail($id = null)
+	{
+		$data['title'] = $this->db->get_where('title_logo', ['id_title' => 1])->row();
+		$data['warna'] = $this->db->get('warna')->result();
+		$data['ukuran'] = $this->db->get('ukuran')->result();
+		$data['barang'] = $this->db->get_where('barang', ['id_barang' => $id])->row();
+		detail_page('lihat', $data);
 	}
 	public function kategori($id = null)
 	{

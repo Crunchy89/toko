@@ -175,6 +175,35 @@
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-list"></i>
+                                <p>
+                                    Pages
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= site_url('home') ?>" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Home Page</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= site_url('home/signIn') ?>" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Login</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= site_url('home/signUp') ?>" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>daftar</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-cogs"></i>
                                 <p>
                                     Admin Control
