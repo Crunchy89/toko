@@ -35,4 +35,22 @@ class Pesanan_model extends CI_Model
       </div>');
         redirect('home');
     }
+    public function kirim()
+    {
+        $post = $this->input->post();
+        $db = $this->db;
+        $barang = $this->db->get_where('barang', ['id_barang' => $post['id_barang']])->row();
+        $jumlah = $this->db->get_where('transaksi', ['id_transaksi' => $post['id_transaksi']])->row();
+        $sisa = $barang->stok - $jumlah->jumlah;
+        $db->set('stok', $sisa);
+        $db->where('id_barang', $post['id_barang']);
+        $db->update('barang');
+        $db->set('status', 'dikirim');
+        $db->where('id_transaksi', $post['id_transaksi']);
+        $db->update('transaksi');
+        $this->session->set_flashdata('kirim', '<div class="alert alert-success" role="alert">
+        Barang Berhasil Dikirim
+      </div>');
+        redirect('pesanan');
+    }
 }

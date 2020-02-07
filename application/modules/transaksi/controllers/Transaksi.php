@@ -18,4 +18,8 @@ class Transaksi extends MY_Controller
 		$data['data'] = $this->transaksi_model->join();
 		member_page('index', $data);
 	}
+	public function terima()
+	{
+		$this->transaksi_model->terima();
+	}
 }

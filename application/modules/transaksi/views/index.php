@@ -42,39 +42,21 @@ function rupiah($angka)
 									<td><?= $row->ukuran ?></td>
 									<td><?= rupiah($row->total) . ' via ' . $row->pembayaran ?></td>
 									<td><?= $row->pengiriman ?></td>
-									<td><button class="btn btn-secondary disabled"><?= $row->apa ?></button></td>
+									<td>
+										<?php if ($row->apa == 'dikirim') : ?>
+											<button class="btn btn-warning disabled"><?= $row->apa ?></button>
+										<?php else : ?>
+											<button class="btn btn-secondary disabled"><?= $row->apa ?></button>
+										<?php endif; ?>
+									</td>
 									<td>
 										<?php if ($row->apa == 'dikirim') : ?>
 											<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#terima<?= $row->id_transaksi ?>">Diterima</button>
 										<?php else : ?>
-											<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#cancel<?= $row->id_transaksi ?>">Cancel Order</button>
+											<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#cancel<?= $row->id_transaksi ?>" disabled>Diterima</button>
 										<?php endif; ?>
-
 									</td>
 								</tr>
-								<!-- Modal -->
-								<div class="modal fade" id="cancel<?= $row->id_transaksi ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-									<div class="modal-dialog modal-dialog-centered" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title" id="exampleModalLabel">Cancel Order</h5>
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-												</button>
-											</div>
-											<form action="" method="post">
-												<div class="modal-body">
-													<input type="hidden" name="id" value="<?= $this->session->userdata('id') ?>">
-													<h3>Apakah Yakin untuk Cancel Order ?</h3>
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-													<button type="submit" class="btn btn-primary">Ya</button>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
 								<div class="modal fade" id="terima<?= $row->id_transaksi ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 									<div class="modal-dialog modal-dialog-centered" role="document">
 										<div class="modal-content">
@@ -84,9 +66,9 @@ function rupiah($angka)
 													<span aria-hidden="true">&times;</span>
 												</button>
 											</div>
-											<form action="" method="post">
+											<form action="<?= site_url('transaksi/terima') ?>" method="post">
 												<div class="modal-body">
-													<input type="hidden" name="id" value="<?= $this->session->userdata('id') ?>">
+													<input type="hidden" name="id" value="<?= $row->id_transaksi ?>">
 													<h3>Apakah Barang sudah sampai ?</h3>
 												</div>
 												<div class="modal-footer">

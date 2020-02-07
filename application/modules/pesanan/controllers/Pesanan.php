@@ -22,4 +22,8 @@ class Pesanan extends MY_Controller
 	{
 		$this->pesanan_model->tambah();
 	}
+	public function kirim()
+	{
+		$this->pesanan_model->kirim();
+	}
 }
