@@ -44,7 +44,7 @@ function rupiah($angka)
 									<td><?= $row->ukuran ?></td>
 									<td><?= rupiah($row->total) . ' via ' . $row->pembayaran ?></td>
 									<td><?= $row->pengiriman ?></td>
-									<td><?= $row->apa ?></td>
+									<td><button class="btn btn-secondary disabled"><?= $row->apa ?></button></td>
 									<td>
 										<a href="" class="btn btn-warning">Kirim</a>
 									</td>

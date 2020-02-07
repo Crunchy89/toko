@@ -58,11 +58,15 @@
                     <?php endif; ?>
                     <?php if ($this->session->userdata('status') == 'member') : ?>
                         <li class="nav-item">
-                            <a class="nav-link active" href="<?= site_url('keranjang') ?>"><i class="fas fa-cart-arrow-down"></i> keranjang
+                            <a class="nav-link active" href="<?= site_url('keranjang') ?>"><i class="fas fa-cart-arrow-down"></i> Keranjang
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="<?= site_url('profile') ?>"><i class="fas fa-user"></i> Profile
+                            <a class="nav-link active" href="<?= site_url('transaksi') ?>"><i class="fas fa-dollar-sign"></i> Pesanan
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="<?= site_url('member') ?>"><i class="fas fa-user"></i> Profile
                             </a>
                         </li>
                         <li class="nav-item">
