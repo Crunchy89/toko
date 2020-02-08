@@ -5,9 +5,6 @@ class Pesanan extends MY_Controller
 {
 	public function __construct()
 	{
-		if ($this->session->userdata('status') != 'admin') {
-			redirect('home');
-		}
 		parent::__construct();
 		$this->load->model('pesanan_model');
 	}
@@ -23,10 +20,16 @@ class Pesanan extends MY_Controller
 	}
 	public function tambah()
 	{
+		if ($this->session->userdata('status') != 'member') {
+			redirect('home');
+		}
 		$this->pesanan_model->tambah();
 	}
 	public function kirim()
 	{
+		if ($this->session->userdata('status') != 'admin') {
+			redirect('home');
+		}
 		$this->pesanan_model->kirim();
 	}
 }

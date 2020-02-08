@@ -61,7 +61,7 @@ function rupiah($angka)
 
 							<!-- Modal Beli-->
 							<div class="modal fade" id="beli<?= $row->id_keranjang ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-								<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-dialog modal-dialog-centered modal-dialog-scrolled" role="document">
 									<div class="modal-content">
 										<div class="modal-header">
 											<h5 class="modal-title" id="exampleModalLabel">Beli</h5>
@@ -72,19 +72,25 @@ function rupiah($angka)
 										<form action="<?= site_url('keranjang/beli') ?>" method="post">
 											<div class="modal-body">
 												<div class="form-group row">
+													<label for="stok" class="col-4">Stok</label>
+													<div class="col-8">
+														<input type="text" name="stok" value="<?= $row->stok ?>" class="form-control form-control-sm" disabled>
+													</div>
+												</div>
+												<div class="form-group row">
 													<input type="hidden" name="id_keranjang" value="<?= $row->id_keranjang ?>">
 													<input type="hidden" name="id_user" value="<?= $this->session->userdata('id') ?>">
 													<input type="hidden" name="id_barang" value="<?= $row->id_barang ?>">
 													<input type="hidden" name="sum" id="sum2" value="<?= $row->harga * $row->jumlah ?>">
 													<label for="jumlah2" class="col-4">Jumlah Pembelian</label>
 													<div class="col-8">
-														<input type="number" name="jumlah" id="jumlah2" class="form-control" value="<?= $row->jumlah ?>" max="<?= $row->stok ?>" min="1" onchange="total2()" required>
+														<input type="number" name="jumlah" id="jumlah2" class="form-control form-control-sm" value="<?= $row->jumlah ?>" max="<?= $row->stok ?>" min="1" onchange="total2()" required>
 													</div>
 												</div>
 												<div class="form-group row">
 													<label for="warna" class="col-4">Warna</label>
 													<div class="col-8">
-														<select name="warna" id="warna" class="form-control">
+														<select name="warna" id="warna" class="form-control form-control-sm">
 															<?php foreach ($warna as $rows) : ?>
 																<option value="<?= $rows->id_warna ?>"><?= $rows->warna ?></option>
 															<?php endforeach; ?>
@@ -104,7 +110,7 @@ function rupiah($angka)
 												<div class="form-group row">
 													<label for="jasa" class="col-4">Jasa Pengiriman</label>
 													<div class="col-8">
-														<select name="jasa" id="jasa" class="form-control">
+														<select name="jasa" id="jasa" class="form-control form-control-sm">
 															<option value="JNE">JNE</option>
 															<option value="POST">POST Kilat</option>
 														</select>
@@ -114,7 +120,7 @@ function rupiah($angka)
 													<div class="form-group row">
 														<label for="ukuran" class="col-4">Ukuran</label>
 														<div class="col-8">
-															<select name="ukuran" id="ukuran" class="form-control">
+															<select name="ukuran" id="ukuran" class="form-control form-control-sm">
 																<option>Pilih Ukuran</option>
 																<?php foreach ($ukuran as $rows) : ?>
 																	<option value="<?= $rows->id_ukuran ?>"><?= $rows->ukuran ?></option>
