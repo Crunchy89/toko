@@ -20,7 +20,13 @@
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3><?= count($this->db->get('laporan')->result()) ?></h3>
+                    <h3><?php $sum = $this->db->get('laporan')->result();
+                        $data = 0;
+                        foreach ($sum as $row) {
+                            $data += $row->jumlah;
+                        }
+                        echo $data;
+                        ?></h3>
                     <p>Barang Terjual</p>
                 </div>
                 <div class="icon">

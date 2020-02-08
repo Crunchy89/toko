@@ -86,11 +86,12 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?= site_url('testimoni/tambah') ?>" method="post">
+                <form action="<?= site_url('home/testimoni') ?>" method="post">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="test">Berikan Kami Testimoni</label>
-                            <textarea name="test" id="test" cols="30" rows="10" class="form-control" placeholder="Testimoni"></textarea>
+                            <label for="testimoni">Berikan Kami Testimoni</label>
+                            <input type="hidden" name="id" value="<?= $this->session->userdata('id') ?>">
+                            <textarea name="testimoni" id="testimoni" cols="30" rows="10" class="form-control" placeholder="Testimoni"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -183,6 +184,29 @@
                     <?php foreach ($berita as $row) { ?>
                         <a href="<?= site_url('home/berita/') . $row->id_berita ?>" class="list-group-item"><?= $row->judul_berita ?></a>
                     <?php } ?>
+                </div>
+                <hr>
+                <h3 class="my-4">Testimoni</h3>
+                <div class="list-group">
+                    <div class="accordion" id="accordionExample">
+                        <?php foreach ($testimoni as $row) : ?>
+                            <div class="card">
+                                <div class="card-header" id="heading<?= $row->id_testimoni ?>">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<?= $row->id_testimoni ?>" aria-expanded="true" aria-controls="collapse<?= $row->id_testimoni ?>">
+                                            <?= $row->nama ?>
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="collapse<?= $row->id_testimoni ?>" class="collapse" aria-labelledby="heading<?= $row->id_testimoni ?>" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <?= $row->testimoni ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
             <!-- /.col-lg-3 -->

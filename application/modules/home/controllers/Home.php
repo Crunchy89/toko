@@ -16,6 +16,7 @@ class Home extends MY_Controller
 		$data['promo'] = $this->db->get('promo')->result();
 		$data['barang'] = $this->db->get('barang')->result();
 		$data['berita'] = $this->db->query("SELECT * FROM berita Order by id_berita desc limit 3")->result();
+		$data['testimoni'] = $this->db->query('SELECT testimoni.*,user.* FROM testimoni INNER JOIN user ON testimoni.id_user = user.id_user Order By testimoni.id_testimoni DESC limit 6')->result();
 		front_page('index', $data);
 	}
 	public function profil()
@@ -31,6 +32,7 @@ class Home extends MY_Controller
 		$data['promo'] = $this->db->get('promo')->result();
 		$data['barang'] = $this->db->query("SELECT * from barang where nama_barang LIKE '%$cari%'")->result();
 		$data['berita'] = $this->db->query("SELECT * FROM berita Order by id_berita desc limit 3")->result();
+		$data['testimoni'] = $this->db->query('SELECT testimoni.*,user.* FROM testimoni INNER JOIN user ON testimoni.id_user = user.id_user Order By testimoni.id_testimoni DESC limit 6')->result();
 		front_page('index', $data);
 	}
 	public function detail($id = null)
@@ -55,6 +57,7 @@ class Home extends MY_Controller
 		$data['promo'] = $this->db->get('promo')->result();
 		$data['barang'] = $this->db->get_where('barang', ['id_kategori' => $id])->result();
 		$data['berita'] = $this->db->query("SELECT * FROM berita Order by id_berita desc limit 3")->result();
+		$data['testimoni'] = $this->db->query('SELECT testimoni.*,user.* FROM testimoni INNER JOIN user ON testimoni.id_user = user.id_user Order By testimoni.id_testimoni DESC limit 6')->result();
 		front_page('index', $data);
 	}
 	public function signIn()
@@ -86,6 +89,10 @@ class Home extends MY_Controller
 			$data['title'] = $this->db->get_where('title_logo', ['id_title' => 1])->row();
 			detail_page('daftar', $data);
 		}
+	}
+	public function testimoni()
+	{
+		$this->home_model->testimoni();
 	}
 	public function logout()
 	{

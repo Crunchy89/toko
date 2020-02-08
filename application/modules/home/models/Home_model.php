@@ -141,6 +141,18 @@ class Home_model extends CI_Model
             redirect('home/signIn');
         }
     }
+    public function testimoni()
+    {
+        $post = $this->input->post();
+        $db = $this->db;
+        $tanggal = date('Y/m/d');
+        $testimoni = htmlspecialchars($post['testimoni']);
+        $db->set('tanggal', $tanggal);
+        $db->set('testimoni', $testimoni);
+        $db->set('id_user', $post['id']);
+        $db->insert('testimoni');
+        redirect('home');
+    }
     public function logout()
     {
         $this->session->unset_userdata('id');
