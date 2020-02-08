@@ -5,7 +5,8 @@ class Keranjang extends MY_Controller
 {
 	public function __construct()
 	{
-		parent::__construct();
+		if ($this->session->userdata('status') != 'member')
+			parent::__construct();
 		$this->load->model('keranjang_model');
 	}
 	public function index()
