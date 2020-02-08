@@ -22,6 +22,8 @@ class Home extends MY_Controller
 	public function profil()
 	{
 		$data['title'] = $this->db->get_where('title_logo', ['id_title' => 1])->row();
+		$data['toko'] = $this->db->get_where('user', ['id_user' => $this->session->userdata('id')])->row();
+		$data['medsos'] = $this->db->get('medsos')->result();
 		detail_page('toko', $data);
 	}
 	public function cari()

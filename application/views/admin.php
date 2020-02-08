@@ -113,9 +113,21 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
+                                    <a href="<?= site_url('profil') ?>" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Profil Toko</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="<?= site_url('toko') ?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Toko dan logo</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= site_url('profil/medsos') ?>" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Media Sosial</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
