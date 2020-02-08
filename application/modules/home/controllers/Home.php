@@ -22,7 +22,7 @@ class Home extends MY_Controller
 	public function profil()
 	{
 		$data['title'] = $this->db->get_where('title_logo', ['id_title' => 1])->row();
-		$data['toko'] = $this->db->get_where('user', ['id_user' => $this->session->userdata('id')])->row();
+		$data['toko'] = $this->db->get_where('user', ['id_user' => 1])->row();
 		$data['medsos'] = $this->db->get('medsos')->result();
 		detail_page('toko', $data);
 	}
@@ -43,6 +43,8 @@ class Home extends MY_Controller
 		$data['warna'] = $this->db->get('warna')->result();
 		$data['ukuran'] = $this->db->get('ukuran')->result();
 		$data['barang'] = $this->db->get_where('barang', ['id_barang' => $id])->row();
+		$data['toko'] = $this->db->get_where('user', ['id_user' => 1])->row();
+		$data['medsos'] = $this->db->get('medsos')->result();
 		detail_page('lihat', $data);
 	}
 	public function berita($id = null)
@@ -50,6 +52,8 @@ class Home extends MY_Controller
 		$data['title'] = $this->db->get_where('title_logo', ['id_title' => 1])->row();
 		$data['berita'] = $this->db->get_where('berita', ['id_berita' => $id])->row();
 		$data['data'] = $this->db->get('berita')->result();
+		$data['toko'] = $this->db->get_where('user', ['id_user' => 1])->row();
+		$data['medsos'] = $this->db->get('medsos')->result();
 		detail_page('berita', $data);
 	}
 	public function kategori($id = null)

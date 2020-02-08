@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2020 at 03:24 AM
+-- Generation Time: Feb 08, 2020 at 12:38 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -154,7 +154,31 @@ INSERT INTO `laporan` (`id_laporan`, `tanggal`, `kode_transaksi`, `nama_barang`,
 (1, '2020-02-07', '5e3d034de841e', 'Vivo Y-91', 2, 'Silver', NULL, 2, 4000000),
 (2, '2020-02-07', '5e3d70d106a1c', 'Vivo Y-91', 2, 'Silver', NULL, 2, 4000000),
 (3, '2020-02-07', '5e3d72eb5523b', 'Vivo Y-91', 2, 'Silver', NULL, 1, 2000000),
-(4, '2020-02-07', '5e3d73104a844', 'Vivo Y-91', 3, 'Silver', NULL, 1, 2000000);
+(4, '2020-02-07', '5e3d73104a844', 'Vivo Y-91', 3, 'Silver', NULL, 1, 2000000),
+(5, '2020-02-08', '5e3e148bdf04b', 'Gurita', 2, 'Silver', NULL, 1, 10000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medsos`
+--
+
+CREATE TABLE `medsos` (
+  `id_medsos` int(11) NOT NULL,
+  `icon` varchar(50) NOT NULL,
+  `warna` varchar(20) NOT NULL,
+  `link` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `medsos`
+--
+
+INSERT INTO `medsos` (`id_medsos`, `icon`, `warna`, `link`) VALUES
+(1, 'fab fa-fw fa-facebook-f', 'btn-primary', '#'),
+(2, 'fab fa-fw fa-twitter', 'btn-info', '#'),
+(3, 'fab fa-fw fa-instagram', 'btn-warning', '#'),
+(4, 'fab fa-fw fa-whatsapp', 'btn-success', '#');
 
 -- --------------------------------------------------------
 
@@ -243,7 +267,7 @@ CREATE TABLE `transaksi` (
 
 INSERT INTO `transaksi` (`id_transaksi`, `no_transaksi`, `pembayaran`, `pengiriman`, `id_barang`, `id_warna`, `id_ukuran`, `id_user`, `status`, `jumlah`, `total`) VALUES
 (8, '5e3d77df056ed', 'BRI', 'JNE', 1, 2, 0, 3, 'pending', 2, 4000000),
-(9, '5e3e148bdf04b', 'BRI', 'JNE', 3, 2, 0, 2, 'dikirim', 1, 10000);
+(10, '5e3e5a988a0b6', 'BCA', 'JNE', 8, 2, 0, 2, 'pending', 10, 30000000);
 
 -- --------------------------------------------------------
 
@@ -261,7 +285,9 @@ CREATE TABLE `ukuran` (
 --
 
 INSERT INTO `ukuran` (`id_ukuran`, `ukuran`) VALUES
-(1, '13 &quot;');
+(1, 'Kecil'),
+(5, 'Sedang'),
+(6, 'Besar');
 
 -- --------------------------------------------------------
 
@@ -285,9 +311,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nama`, `email`, `alamat`, `no_telp`, `status`, `username`, `password`) VALUES
-(1, 'admin', 'admin@gmail.com', 'admin tokoku', '+6281849910278', 'admin', 'admin', '1sampai8'),
+(1, 'Toko Jaya Cell', 'jaya.cell@gmail.com', 'Jln. Mohammad Hatta No. 6, Praya', '+6281849910278', 'admin', 'admin', '1sampai8'),
 (2, 'Ferdy Barliansyah R.', 'rocker.hunt@gmail.com', 'Kopang', '087849910278', 'member', 'Ferdy', 'makannasi'),
-(3, 'Firda Widiastuti', 'Firda@gmail.com', 'tolot tolot', '08122924', 'member', 'Firda', 'makannasi');
+(3, 'Firda Widiastuti', 'Firda@gmail.com', 'tolot tolot', '08122924', 'member', 'Firda', 'makannasi'),
+(4, 'abdul hafiz bahrain', 'abdulhafizbahrain@gmail.com', 'asdf', '0', 'member', 'g', 'a');
 
 -- --------------------------------------------------------
 
@@ -305,7 +332,11 @@ CREATE TABLE `warna` (
 --
 
 INSERT INTO `warna` (`id_warna`, `warna`) VALUES
-(2, 'Silver');
+(2, 'Silver'),
+(3, 'Merah'),
+(4, 'Pink'),
+(5, 'Hitam'),
+(6, 'Biru');
 
 --
 -- Indexes for dumped tables
@@ -347,6 +378,12 @@ ALTER TABLE `keranjang`
 --
 ALTER TABLE `laporan`
   ADD PRIMARY KEY (`id_laporan`);
+
+--
+-- Indexes for table `medsos`
+--
+ALTER TABLE `medsos`
+  ADD PRIMARY KEY (`id_medsos`);
 
 --
 -- Indexes for table `promo`
@@ -422,13 +459,19 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `laporan`
 --
 ALTER TABLE `laporan`
-  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `medsos`
+--
+ALTER TABLE `medsos`
+  MODIFY `id_medsos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `promo`
@@ -452,25 +495,25 @@ ALTER TABLE `title_logo`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `ukuran`
 --
 ALTER TABLE `ukuran`
-  MODIFY `id_ukuran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_ukuran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `warna`
 --
 ALTER TABLE `warna`
-  MODIFY `id_warna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_warna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
