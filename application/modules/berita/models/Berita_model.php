@@ -71,7 +71,7 @@ class Berita_model extends CI_Model
         $id = $this->input->post('id');
         $inv = $this->db->query("SELECT gambar FROM berita WHERE id_berita = $id")->row();
         if ($inv->gambar != 'noimage.png') {
-            unlink("assets/img/gambar/$inv->gambar");
+            unlink("assets/img/berita/$inv->gambar");
         }
         $this->db->where('id_berita', $id);
         $this->db->delete('berita');
