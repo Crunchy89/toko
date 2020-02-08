@@ -15,6 +15,7 @@ class Home extends MY_Controller
 		$data['kategori'] = $this->db->get('kategori')->result();
 		$data['promo'] = $this->db->get('promo')->result();
 		$data['barang'] = $this->db->get('barang')->result();
+		$data['berita'] = $this->db->query("SELECT * FROM berita Order by id_berita desc limit 3")->result();
 		front_page('index', $data);
 	}
 	public function profil()
@@ -29,6 +30,7 @@ class Home extends MY_Controller
 		$data['kategori'] = $this->db->get('kategori')->result();
 		$data['promo'] = $this->db->get('promo')->result();
 		$data['barang'] = $this->db->query("SELECT * from barang where nama_barang LIKE '%$cari%'")->result();
+		$data['berita'] = $this->db->query("SELECT * FROM berita Order by id_berita desc limit 3")->result();
 		front_page('index', $data);
 	}
 	public function detail($id = null)
@@ -39,12 +41,20 @@ class Home extends MY_Controller
 		$data['barang'] = $this->db->get_where('barang', ['id_barang' => $id])->row();
 		detail_page('lihat', $data);
 	}
+	public function berita($id = null)
+	{
+		$data['title'] = $this->db->get_where('title_logo', ['id_title' => 1])->row();
+		$data['berita'] = $this->db->get_where('berita', ['id_berita' => $id])->row();
+		$data['data'] = $this->db->get('berita')->result();
+		detail_page('berita', $data);
+	}
 	public function kategori($id = null)
 	{
 		$data['title'] = $this->db->get_where('title_logo', ['id_title' => 1])->row();
 		$data['kategori'] = $this->db->get('kategori')->result();
 		$data['promo'] = $this->db->get('promo')->result();
 		$data['barang'] = $this->db->get_where('barang', ['id_kategori' => $id])->result();
+		$data['berita'] = $this->db->query("SELECT * FROM berita Order by id_berita desc limit 3")->result();
 		front_page('index', $data);
 	}
 	public function signIn()

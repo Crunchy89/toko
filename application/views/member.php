@@ -193,6 +193,7 @@
     <!-- ./wrapper -->
 
     <!-- jQuery -->
+    <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
     <script src="<?= base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="<?= base_url() ?>assets/plugins/jquery-ui/jquery-ui.min.js"></script>

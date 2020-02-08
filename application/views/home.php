@@ -16,10 +16,92 @@
     <!-- Custom styles for this template -->
     <link href="<?= base_url() ?>assets/css/shop-homepage.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/fontawesome-free/css/all.min.css">
+    <style>
+        body {
+            background-image: url('<?= base_url('assets/img/bg.jpg') ?>');
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
 
+        .testimoni {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: orange;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #bell {
+            animation: ani 2s linear infinite;
+        }
+
+        @keyframes ani {
+            0% {
+                transform: rotate(45deg);
+            }
+
+            20% {
+                transform: rotate(-40deg);
+            }
+
+            40% {
+                transform: rotate(35deg);
+            }
+
+            60% {
+                transform: rotate(-30deg);
+            }
+
+            80% {
+                transform: rotate(25deg);
+            }
+
+            100% {
+                transform: rotate(-20deg);
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <?php if ($this->session->userdata('status')) : ?>
+        <a href="#" class="testimoni text-dark" data-toggle="modal" data-target="#test">
+            <i class="fas fa-fw fa-2x fa-bell" id="bell"></i>
+        </a>
+    <?php endif; ?>
+
+    <!-- Modal -->
+    <div class="modal fade" id="test" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Testimoni</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?= site_url('testimoni/tambah') ?>" method="post">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="test">Berikan Kami Testimoni</label>
+                            <textarea name="test" id="test" cols="30" rows="10" class="form-control" placeholder="Testimoni"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Kirim</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
@@ -95,7 +177,13 @@
                         <a href="<?= site_url('home/kategori/') . $row->id_kategori ?>" class="list-group-item"><?= $row->kategori ?></a>
                     <?php } ?>
                 </div>
-
+                <hr>
+                <h3 class="my-4">Berita Terbaru</h3>
+                <div class="list-group">
+                    <?php foreach ($berita as $row) { ?>
+                        <a href="<?= site_url('home/berita/') . $row->id_berita ?>" class="list-group-item"><?= $row->judul_berita ?></a>
+                    <?php } ?>
+                </div>
             </div>
             <!-- /.col-lg-3 -->
             <div class="col-lg-9">
@@ -116,11 +204,11 @@
                         foreach ($promo as $row) :
                             if ($i == 1) : ?>
                                 <div class="carousel-item active">
-                                    <img class="d-block img-fluid" src="<?= base_url('assets/img/promo/') . $row->gambar ?>">
+                                    <img class="d-block img-fluid w-100" src="<?= base_url('assets/img/promo/') . $row->gambar ?>">
                                 </div>
                             <?php else : ?>
                                 <div class="carousel-item">
-                                    <img class="d-block img-fluid" src="<?= base_url('assets/img/promo/') . $row->gambar ?>">
+                                    <img class="d-block img-fluid w-100" src="<?= base_url('assets/img/promo/') . $row->gambar ?>">
                                 </div>
                             <?php endif; ?>
                         <?php $i++;

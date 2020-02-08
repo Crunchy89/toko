@@ -16,7 +16,14 @@
     <!-- Custom styles for this template -->
     <link href="<?= base_url() ?>assets/css/shop-homepage.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/fontawesome-free/css/all.min.css">
-
+    <style>
+        body {
+            background-image: url('<?= base_url('assets/img/bg.jpg') ?>');
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
 
 <body>
