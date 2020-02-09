@@ -53,7 +53,7 @@ function rupiah($angka)
 										<?php if ($row->apa == 'dikirim') : ?>
 											<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#terima<?= $row->id_transaksi ?>">Diterima</button>
 										<?php else : ?>
-											<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#cancel<?= $row->id_transaksi ?>" disabled>Diterima</button>
+											<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#cancel<?= $row->id_transaksi ?>">Cancel Order</button>
 										<?php endif; ?>
 									</td>
 								</tr>
@@ -70,6 +70,29 @@ function rupiah($angka)
 												<div class="modal-body">
 													<input type="hidden" name="id" value="<?= $row->id_transaksi ?>">
 													<h3>Apakah Barang sudah sampai ?</h3>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+													<button type="submit" class="btn btn-primary">Ya</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+
+								<div class="modal fade" id="cancel<?= $row->id_transaksi ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel">Cancel Order</h5>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<form action="<?= site_url('transaksi/hapus') ?>" method="post">
+												<div class="modal-body">
+													<input type="hidden" name="id_transaksi" value="<?= $row->id_transaksi ?>">
+													<h3>Apakah anda Yakin ?</h3>
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>

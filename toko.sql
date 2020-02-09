@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2020 at 12:38 PM
+-- Generation Time: Feb 09, 2020 at 06:15 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hp`
+-- Database: `toko`
 --
 
 -- --------------------------------------------------------
@@ -78,17 +78,6 @@ INSERT INTO `berita` (`id_berita`, `judul_berita`, `isi_berita`, `gambar`, `tang
 -- --------------------------------------------------------
 
 --
--- Table structure for table `carousel`
---
-
-CREATE TABLE `carousel` (
-  `id_carousel` int(11) NOT NULL,
-  `gambar` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `kategori`
 --
 
@@ -126,7 +115,8 @@ CREATE TABLE `keranjang` (
 --
 
 INSERT INTO `keranjang` (`id_keranjang`, `id_user`, `id_barang`, `id_warna`, `jumlah`, `id_ukuran`) VALUES
-(8, 3, 4, 2, 1, 0);
+(8, 3, 4, 2, 1, 0),
+(11, 2, 3, 2, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -178,7 +168,45 @@ INSERT INTO `medsos` (`id_medsos`, `icon`, `warna`, `link`) VALUES
 (1, 'fab fa-fw fa-facebook-f', 'btn-primary', '#'),
 (2, 'fab fa-fw fa-twitter', 'btn-info', '#'),
 (3, 'fab fa-fw fa-instagram', 'btn-warning', '#'),
-(4, 'fab fa-fw fa-whatsapp', 'btn-success', '#');
+(4, 'fab fa-fw fa-whatsapp', 'btn-success', 'https://wa.me/6287849910278?text=Bisa%20share%20lokasi%20saya%20mau%20datang%20ke%20tokonya%20langsung');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pesan`
+--
+
+CREATE TABLE `pesan` (
+  `id_pesan` int(11) NOT NULL,
+  `id_pengirim` int(11) NOT NULL,
+  `id_penerima` int(11) NOT NULL,
+  `pesan` text NOT NULL,
+  `tanggal` datetime NOT NULL,
+  `status` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pesan`
+--
+
+INSERT INTO `pesan` (`id_pesan`, `id_pengirim`, `id_penerima`, `pesan`, `tanggal`, `status`) VALUES
+(1, 2, 1, 'tes pesan', '2020-02-09 13:10:10', 'read'),
+(2, 2, 1, 'tes lagi', '2020-02-09 13:30:57', 'read'),
+(3, 2, 1, 'tes terus', '2020-02-09 13:39:40', 'read'),
+(4, 3, 1, 'testing', '2020-02-09 21:58:56', 'read'),
+(5, 3, 1, 'testing aja', '2020-02-09 22:00:41', 'read'),
+(6, 2, 1, 'ada warna yg lain ?', '2020-02-09 22:22:45', 'read'),
+(7, 2, 1, 'tester', '2020-02-09 22:35:44', 'read'),
+(8, 1, 3, 'tes balas', '2020-02-09 16:07:20', 'unread'),
+(9, 2, 1, 'test', '2020-02-09 16:29:30', 'read'),
+(11, 1, 2, 'testing', '2020-02-09 16:47:07', 'unread'),
+(12, 1, 3, 'saudara Firda Widiastuti telah Melakukan Pemesanan Vivo Y-91 dengan jumlah 1 unit dengan total pembayaran 2000000 silahkan selesaikan proses pembayaran melalui Bank Mandiri, foto struk transfer dan kirimkan ke <a href=\'https://wa.me/<?= 6287849910278\'></a> dan Barang akan langsung kami kirimkan Via JNE', '2020-02-09 17:11:57', 'unread'),
+(13, 1, 3, 'Firda Widiastuti Anda telah Melakukan Pemesanan Power Bank Xiami dengan jumlah 2 unit dengan total pembayaran 300000 silahkan selesaikan proses pembayaran melalui Bank BCA, foto struk transfer dan kirimkan ke <a href=\'https://wa.me/6287849910278\'><a> dan Barang akan langsung kami kirimkan Via JNE', '2020-02-09 17:14:55', 'unread'),
+(14, 1, 3, 'Firda Widiastuti Anda telah Melakukan Pemesanan Ring dengan jumlah 1 unit dengan total pembayaran Rp 5.000 silahkan selesaikan proses pembayaran melalui Bank BCA ke rekening 02345128345, foto struk transfer dan kirimkan ke Whatsapp toko dengan nomor : +6287849910278 dan Barang akan langsung kami kirimkan Via JNE', '2020-02-09 17:19:30', 'unread'),
+(15, 1, 3, 'Firda Widiastuti Anda telah Melakukan Pemesanan OPPO Realme 5 Pro dengan jumlah 1 unit dengan total pembayaran Rp 3.000.000 silahkan selesaikan proses pembayaran melalui Bank BRI ke rekening 02345128345, foto struk transfer dan kirimkan ke Whatsapp toko dengan nomor : +6287849910278 dan Barang akan langsung kami kirimkan Via JNE', '2020-02-09 17:23:09', 'unread'),
+(16, 1, 2, 'Ferdy Barliansyah R. Anda telah Melakukan Pemesanan OPPO Realme 5 Pro dengan jumlah 1 unit dengan total pembayaran Rp 3.000.000 silahkan selesaikan proses pembayaran melalui Bank Mandiri ke rekening 02345128345, foto struk transfer dan kirimkan ke Whatsapp toko dengan nomor : +6287849910278 dan Barang akan langsung kami kirimkan Via JNE', '2020-02-09 17:35:35', 'unread'),
+(17, 1, 2, 'Ferdy Barliansyah R. Anda telah Melakukan Pemesanan Power Bank Xiami dengan jumlah 2 unit dengan total pembayaran Rp 300.000 silahkan selesaikan proses pembayaran melalui Bank BCA ke rekening 02345128345, foto struk transfer dan kirimkan ke Whatsapp toko dengan nomor : +6287849910278 dan Barang akan langsung kami kirimkan Via JNE', '2020-02-09 17:43:12', 'unread'),
+(18, 1, 2, 'Ferdy Barliansyah R. Anda telah Melakukan Pemesanan Gurita dengan jumlah 1 unit dengan total pembayaran Rp 10.000 silahkan selesaikan proses pembayaran melalui Bank BCA ke rekening 02345128345, foto struk transfer dan kirimkan ke Whatsapp toko dengan nomor : +6287849910278 dan Barang akan langsung kami kirimkan Via JNE', '2020-02-09 17:44:27', 'unread');
 
 -- --------------------------------------------------------
 
@@ -261,14 +289,6 @@ CREATE TABLE `transaksi` (
   `total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `transaksi`
---
-
-INSERT INTO `transaksi` (`id_transaksi`, `no_transaksi`, `pembayaran`, `pengiriman`, `id_barang`, `id_warna`, `id_ukuran`, `id_user`, `status`, `jumlah`, `total`) VALUES
-(8, '5e3d77df056ed', 'BRI', 'JNE', 1, 2, 0, 3, 'pending', 2, 4000000),
-(10, '5e3e5a988a0b6', 'BCA', 'JNE', 8, 2, 0, 2, 'pending', 10, 30000000);
-
 -- --------------------------------------------------------
 
 --
@@ -311,7 +331,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nama`, `email`, `alamat`, `no_telp`, `status`, `username`, `password`) VALUES
-(1, 'Toko Jaya Cell', 'jaya.cell@gmail.com', 'Jln. Mohammad Hatta No. 6, Praya', '+6281849910278', 'admin', 'admin', '1sampai8'),
+(1, 'Toko Jaya Cell', 'jaya.cell@gmail.com', 'Jln. Mohammad Hatta No. 6, Praya', '+6287849910278', 'admin', 'admin', '1sampai8'),
 (2, 'Ferdy Barliansyah R.', 'rocker.hunt@gmail.com', 'Kopang', '087849910278', 'member', 'Ferdy', 'makannasi'),
 (3, 'Firda Widiastuti', 'Firda@gmail.com', 'tolot tolot', '08122924', 'member', 'Firda', 'makannasi'),
 (4, 'abdul hafiz bahrain', 'abdulhafizbahrain@gmail.com', 'asdf', '0', 'member', 'g', 'a');
@@ -356,12 +376,6 @@ ALTER TABLE `berita`
   ADD PRIMARY KEY (`id_berita`);
 
 --
--- Indexes for table `carousel`
---
-ALTER TABLE `carousel`
-  ADD PRIMARY KEY (`id_carousel`);
-
---
 -- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
@@ -384,6 +398,12 @@ ALTER TABLE `laporan`
 --
 ALTER TABLE `medsos`
   ADD PRIMARY KEY (`id_medsos`);
+
+--
+-- Indexes for table `pesan`
+--
+ALTER TABLE `pesan`
+  ADD PRIMARY KEY (`id_pesan`);
 
 --
 -- Indexes for table `promo`
@@ -444,12 +464,6 @@ ALTER TABLE `berita`
   MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `carousel`
---
-ALTER TABLE `carousel`
-  MODIFY `id_carousel` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
@@ -459,7 +473,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `laporan`
@@ -472,6 +486,12 @@ ALTER TABLE `laporan`
 --
 ALTER TABLE `medsos`
   MODIFY `id_medsos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `pesan`
+--
+ALTER TABLE `pesan`
+  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `promo`
@@ -495,7 +515,7 @@ ALTER TABLE `title_logo`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `ukuran`

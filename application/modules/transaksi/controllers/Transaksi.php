@@ -22,4 +22,8 @@ class Transaksi extends MY_Controller
 	{
 		$this->transaksi_model->terima();
 	}
+	public function hapus()
+	{
+		$this->transaksi_model->hapus();
+	}
 }

@@ -15,101 +15,40 @@
 
     <!-- Custom styles for this template -->
     <link href="<?= base_url() ?>assets/css/shop-homepage.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/css/costum.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/fontawesome-free/css/all.min.css">
-    <style>
-        body {
-            background-image: url('<?= base_url('assets/img/bg.jpg') ?>');
-            background-position: center;
-            background-size: cover;
-            background-attachment: fixed;
-        }
-
-        .testimoni {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background-color: orange;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #bell {
-            animation: ani 2s linear infinite;
-        }
-
-        @keyframes ani {
-            0% {
-                transform: rotate(45deg);
-            }
-
-            20% {
-                transform: rotate(-40deg);
-            }
-
-            40% {
-                transform: rotate(35deg);
-            }
-
-            60% {
-                transform: rotate(-30deg);
-            }
-
-            80% {
-                transform: rotate(25deg);
-            }
-
-            100% {
-                transform: rotate(-20deg);
-            }
-        }
-    </style>
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/summernote/summernote-bs4.css">
 </head>
 
 <body>
-    <?php if ($this->session->userdata('status')) : ?>
-        <a href="#" class="testimoni text-dark" data-toggle="modal" data-target="#test">
-            <i class="fas fa-fw fa-2x fa-bell" id="bell"></i>
-        </a>
-    <?php endif; ?>
 
-    <!-- Modal -->
-    <div class="modal fade" id="test" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Testimoni</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="<?= site_url('home/testimoni') ?>" method="post">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="testimoni">Berikan Kami Testimoni</label>
-                            <input type="hidden" name="id" value="<?= $this->session->userdata('id') ?>">
-                            <textarea name="testimoni" id="testimoni" cols="30" rows="10" class="form-control" placeholder="Testimoni"></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-primary">Kirim</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#"><img src="<?= base_url('assets/img/logo/') . $title->logo ?>" alt="logo" width="50px"></a>
-            <form class="form-inline my-2 my-lg-0" action="<?= site_url('home/cari') ?>" method="post">
-                <input class="form-control mr-sm-2" type="search" name="cari" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <form class="form-inline my-2 my-sm-0" action="<?= site_url('home/cari') ?>" method="post">
+                <div class="input-group">
+                    <input type="text" name="cari" class="form-control form-control-sm" placeholder="Search">
+                    <div class="input-group-append">
+                        <button type="submit" class="input-group-text"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
             </form>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -166,12 +105,11 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container mt-3">
         <?= $this->session->flashdata('pesan'); ?>
         <?= $this->session->flashdata('keranjang'); ?>
         <div class="row">
             <div class="col-lg-3">
-
                 <h3 class="my-4"><?= $title->toko ?></h3>
                 <div class="list-group">
                     <?php foreach ($kategori as $row) { ?>
@@ -249,25 +187,150 @@
                 </div>
 
                 <?= $view ?>
-                <!-- /.col-lg-9 -->
             </div>
         </div>
-        <!-- /.row -->
-
     </div>
-    <!-- /.container -->
-
-    <!-- Footer -->
     <footer class="py-5 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; <?= $title->toko ?></p>
         </div>
-        <!-- /.container -->
     </footer>
+    <?php if ($this->session->userdata('status') && $this->session->userdata('status') != 'admin') : ?>
+        <a href="#" class="testimoni text-dark btn-warning" data-toggle="modal" data-target="#test">
+            <i class="fas fa-fw fa-bell" id="bell" style="font-size: 1em"></i>
+        </a>
+        <a href="#" class="pesan text-dark btn-success" data-toggle="modal" data-target="#chat">
+            <i class=" fas fa-fw fa-comments"></i>
+        </a>
+
+        <div class="modal fade" id="test" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Testimoni</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="<?= site_url('home/testimoni') ?>" method="post">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="testimoni">Berikan Kami Testimoni</label>
+                                <input type="hidden" name="id" value="<?= $this->session->userdata('id') ?>">
+                                <input type="hidden" name="url" value="<?= current_url() ?>">
+                                <textarea name="testimoni" id="testimoni" cols="30" rows="3" class="form-control" placeholder="Testimoni"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-primary">Kirim</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="chat" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="card-header">
+                        <h3 class="card-title">Chat Admin</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="direct-chat-messages" id="pesan" style="transform: rotate(180deg)">
+                            <script>
+                                $("#pesan").animate({
+                                    scrollTop: $('#pesan').prop("scrollHeight")
+                                }, 1000);
+                            </script>
+                            <?php if ($this->session->userdata('status')) {
+                                foreach ($pesan as $pesans) :
+                            ?>
+                                    <?php if ($pesans->id_pengirim == $this->session->userdata('id')) : ?>
+                                        <div class="direct-chat-msg right" style="transform: rotate(180deg)">
+                                            <div class="direct-chat-infos clearfix">
+                                                <span class="direct-chat-name float-right"><?= $pesans->nama ?></span>
+                                                <span class="direct-chat-timestamp float-left"><?= date('M-d', strtotime($pesans->tanggal)) ?></span>
+                                            </div>
+                                            <img class="direct-chat-img" src="<?= base_url('assets/img/user.png') ?>" alt="message user image">
+                                            <div class="direct-chat-text">
+                                                <?= $pesans->pesan ?>
+                                            </div>
+                                        </div>
+                                    <?php elseif ($pesans->id_pengirim == 1) : ?>
+                                        <div class="direct-chat-msg" style="transform: rotate(180deg)">
+                                            <div class="direct-chat-infos clearfix">
+                                                <span class="direct-chat-name float-left"><?= $pesans->nama ?></span>
+                                                <span class="direct-chat-timestamp float-right"><?= date('M-d H:i', strtotime($pesans->tanggal)) ?></span>
+                                            </div>
+                                            <img class="direct-chat-img" src="<?= base_url('assets/img/user.png') ?>" alt="message user image">
+                                            <div class="direct-chat-text">
+                                                <?= $pesans->pesan ?>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                            <?php endforeach;
+                            } ?>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <form action="<?= site_url('home/pesan') ?>" method="post">
+                            <div class="input-group">
+                                <input type="hidden" name="id_pengirim" value="<?= $this->session->userdata('id') ?>">
+                                <input type="hidden" name="id_penerima" value="1">
+                                <input type="hidden" name="url" value="<?= current_url() ?>">
+                                <input type="text" name="pesan" placeholder="Type Message ..." class="form-control" required>
+                                <span class="input-group-append">
+                                    <button type="submit" class="btn btn-primary" name="send"><i class="fab fa-fw fa-airbnb" style="transform:rotate(90deg)"></i> Send</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
 
     <!-- Bootstrap core JavaScript -->
     <script src="<?= base_url() ?>assets/vendor/jquery/jquery.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/costum.js"></script>
     <script src="<?= base_url() ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="<?= base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="<?= base_url() ?>assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <script src="<?= base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="<?= base_url() ?>assets/plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="<?= base_url() ?>assets/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="<?= base_url() ?>assets/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="<?= base_url() ?>assets/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="<?= base_url() ?>assets/plugins/moment/moment.min.js"></script>
+    <script src="<?= base_url() ?>assets/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="<?= base_url() ?>assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="<?= base_url() ?>assets/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="<?= base_url() ?>assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="<?= base_url() ?>assets/dist/js/adminlte.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="<?= base_url() ?>assets/dist/js/pages/dashboard.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="<?= base_url() ?>assets/dist/js/demo.js"></script>
 
 </body>
 

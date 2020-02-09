@@ -85,6 +85,7 @@ class Home_model extends CI_Model
             ]
         ];
     }
+
     public function tambah()
     {
         $post = $this->input->post();
@@ -130,7 +131,7 @@ class Home_model extends CI_Model
             );
             $this->session->set_userdata($data);
             if ($cek->status == 'member') {
-                redirect('home');
+                redirect($post['url']);
             } else if ($cek->status == 'admin') {
                 redirect('admin');
             }
@@ -151,7 +152,7 @@ class Home_model extends CI_Model
         $db->set('testimoni', $testimoni);
         $db->set('id_user', $post['id']);
         $db->insert('testimoni');
-        redirect('home');
+        redirect($post['url']);
     }
     public function logout()
     {
@@ -160,5 +161,24 @@ class Home_model extends CI_Model
         $this->session->unset_userdata('status');
         $this->session->sess_destroy();
         redirect('home');
+    }
+
+    public function pesan_home()
+    {
+        $id_user = $this->session->userdata('id');
+        return $this->db->query("SELECT pesan.*, user.* FROM pesan INNER JOIN user ON pesan.id_pengirim = user.id_user WHERE pesan.id_pengirim = $id_user OR pesan.id_penerima=$id_user ORDER BY pesan.id_pesan DESC")->result();
+    }
+    public function pesan()
+    {
+        $post = $this->input->post();
+        $db = $this->db;
+        $date = date('Y/m/d H:i:s');
+        $db->set('pesan', htmlspecialchars($post['pesan']));
+        $db->set('id_penerima', $post['id_penerima']);
+        $db->set('id_pengirim', $post['id_pengirim']);
+        $db->set('tanggal', $date);
+        $db->set('status', 'unread');
+        $db->insert('pesan');
+        redirect($post['url']);
     }
 }

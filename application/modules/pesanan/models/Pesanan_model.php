@@ -30,10 +30,29 @@ class Pesanan_model extends CI_Model
     $db->set('jumlah', $jumlah);
     $db->set('total', $total);
     $db->insert('transaksi');
+
+    function rupiah($angka)
+    {
+
+      $hasil_rupiah = "Rp " . number_format($angka, 0, ',', '.');
+      return $hasil_rupiah;
+    }
+    $harga = rupiah($total);
+    $data = $this->db->query("SELECT * from barang where id_barang = $barang ")->row();
+    $user = $this->db->query("SELECT * from user where id_user =$pembeli ")->row();
+    $admin = $this->db->query("SELECT * from user where id_user =1 ")->row();
+    $date = date('Y/m/d H:i:s');
+    (string) $no = $admin->no_telp;
+    $db->set('id_pengirim', 1);
+    $db->set('id_penerima', $pembeli);
+    $db->set('pesan', "$user->nama Anda telah Melakukan Pemesanan $data->nama_barang dengan jumlah $jumlah unit dengan total pembayaran $harga silahkan selesaikan proses pembayaran melalui Bank $pembayaran ke rekening 02345128345, foto struk transfer dan kirimkan ke Whatsapp toko dengan nomor : $no dan Barang akan langsung kami kirimkan Via $pengiriman");
+    $db->set('tanggal', $date);
+    $db->set('status', 'unread');
+    $db->insert('pesan');
     $this->session->set_flashdata('pesan', '<div class="alert alert-success text-center" role="alert">
         Barang Telah dipesan Silahkan tunggu Konfirmasi
       </div>');
-    redirect('pesanan');
+    redirect($post['url']);
   }
   public function kirim()
   {

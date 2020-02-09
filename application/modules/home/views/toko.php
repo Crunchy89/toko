@@ -7,52 +7,38 @@
         </div>
         <div class="col-md-8">
             <div class="card-body">
-                <table>
-                    <tr>
-                        <th>
-                            <h3>Nama Toko</h3>
-                        </th>
-                        <td>
-                            <h3>: <?= $toko->nama ?></h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <h3>Alamat Toko</h3>
-                        </th>
-                        <td>
-                            <h3>: <?= $toko->alamat ?></h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <h3>Email</h3>
-                        </th>
-                        <td>
-                            <h3>: <?= $toko->email ?></h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <h3>Telepon Toko</h3>
-                        </th>
-                        <td>
-                            <h3>: <?= $toko->no_telp ?></h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <h3>Media Sosial</h3>
-                        </th>
-                        <td>
-                            <h3>:
-                                <?php foreach ($medsos as $rows) : ?>
-                                    <a href="<?= $rows->link ?>" class="btn <?= $rows->warna ?>"><i class="<?= $rows->icon ?>"></i></a>
-                                <?php endforeach; ?>
-                            </h3>
-                        </td>
-                    </tr>
-                </table>
+                <div class="form-group row">
+                    <Label class="col-4">Nama Toko</Label>
+                    <div class="col-8">
+                        <label><?= $toko->nama ?></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <Label class="col-4">Alamat</Label>
+                    <div class="col-8">
+                        <label><?= $toko->alamat ?></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <Label class="col-4">Email</Label>
+                    <div class="col-8">
+                        <label><?= $toko->email ?></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <Label class="col-4">No Telepon</Label>
+                    <div class="col-8">
+                        <label><?= $toko->no_telp ?></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <Label class="col-4">Media Sosial</Label>
+                    <div class="col-8">
+                        <label><?php foreach ($medsos as $rows) : ?>
+                                <a href="<?= $rows->link ?>" class="btn <?= $rows->warna ?>"><i class="<?= $rows->icon ?>"></i></a>
+                            <?php endforeach; ?></label>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

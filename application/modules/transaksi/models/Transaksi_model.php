@@ -33,4 +33,12 @@ class Transaksi_model extends CI_Model
         $db->delete('transaksi');
         redirect('transaksi');
     }
+    public function hapus()
+    {
+        $post = $this->input->post();
+        $db = $this->db;
+        $db->where('id_transaksi', $post['id_transaksi']);
+        $db->delete('transaksi');
+        redirect('transaksi');
+    }
 }

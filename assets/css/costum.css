@@ -1,0 +1,53 @@
+.pesan {
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	width: 3em;
+	height: 3em;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.testimoni {
+	position: fixed;
+	bottom: 90px;
+	right: 30px;
+	width: 3em;
+	height: 3em;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#bell {
+	animation: ani 2s linear infinite;
+}
+
+@keyframes ani {
+	0% {
+		transform: rotate(45deg);
+	}
+
+	20% {
+		transform: rotate(-40deg);
+	}
+
+	40% {
+		transform: rotate(35deg);
+	}
+
+	60% {
+		transform: rotate(-30deg);
+	}
+
+	80% {
+		transform: rotate(25deg);
+	}
+
+	100% {
+		transform: rotate(-20deg);
+	}
+}

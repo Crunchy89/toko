@@ -13,20 +13,23 @@ function rupiah($angka)
         </div>
         <div class="col-md-8">
             <div class="card-body">
-                <h5 class="card-title"><?= $barang->nama_barang ?></h5>
-                <hr>
+                <h3><?= $barang->nama_barang ?></h3>
+                <br>
                 <h3 class="text-danger"><?= rupiah($barang->harga) ?></h3>
                 <hr>
                 <h5>Stok : <?= $barang->stok ?></h5>
                 <hr>
-                <p><?= $barang->detail ?></p>
+                <p style="font-size:1em"><?= $barang->detail ?></p>
                 <hr>
-                <?php if ($barang->stok != 0) : ?>
-                    <button class="btn btn-success" data-toggle="modal" <?php if (!$this->session->userdata('status')) : ?> data-target="#login" <?php else : ?> data-target="#beli" <?php endif; ?>><i class="fas fa-shopping-bag"></i> Beli</button>
-                    <button class="btn btn-primary" data-toggle="modal" <?php if (!$this->session->userdata('status')) : ?> data-target="#login" <?php else : ?> data-target="#keranjang" <?php endif; ?>><i class="fas fa-shopping-cart"></i> Tambah ke Keranjang</button>
+                <?php if ($barang->stok > 0) : ?>
+                    <button class="btn btn-primary" data-toggle="modal" <?php if (!$this->session->userdata('status')) : ?> data-target="#login" <?php else : ?> data-target="#beli" <?php endif; ?>><i class="fas fa-shopping-bag"></i> Beli</button>
+                    <button class="btn btn-warning" data-toggle="modal" <?php if (!$this->session->userdata('status')) : ?> data-target="#login" <?php else : ?> data-target="#keranjang" <?php endif; ?>><i class="fas fa-shopping-cart"></i> Cart</button>
+                    <?php $no = explode('+', $toko->no_telp); ?>
+                    <a href="https://wa.me/<?= $no[1] ?>?text=Saya%20butuh%20informasi%20tentang%20<?= $barang->nama_barang ?>" class="btn btn-success"><i class="fab fa-fw fa-whatsapp"></i> WA</a>
                 <?php else : ?>
                     <button type="button" class="btn btn-danger w-100">Barang Habis</button>
                 <?php endif; ?>
+
                 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -41,6 +44,7 @@ function rupiah($angka)
                                     <div class="form-group row">
                                         <label for="user" class="col-4">Username</label>
                                         <div class="col-8">
+                                            <input type="hidden" name="url" value="<?= current_url() ?>">
                                             <input type="text" name="user" id="user" class="form-control">
                                         </div>
                                     </div>
@@ -64,7 +68,7 @@ function rupiah($angka)
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Beli</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Keranjang</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -123,6 +127,7 @@ function rupiah($angka)
                                         </div>
                                     <?php endif; ?>
                                     <div class="form-group row">
+                                        <input type="hidden" name="url" value="<?= current_url() ?>">
                                         <label for="Total" class="col-4">Total Harga :</label>
                                         <input type="hidden" id="harga2" value="<?= $barang->harga ?>">
                                         <div class="col-8">
